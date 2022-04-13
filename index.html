@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        // 로드이벤트 : 모든 태그, 이미지 등이 로드되면 실행 
+        
+        window.onload = function(){
+
+            var mouseCursor = document.querySelector(".cursor");
+            var follow = document.querySelector(".cursor_follow");
+
+            var navLinks = document.querySelectorAll(".gnbMenu li, h1");
+
+           
+            navLinks.forEach(function(menu){
+                menu.addEventListener("mouseover", function(){
+                    mouseCursor.classList.add("link_hover");
+                });
+
+                menu.addEventListener("mouseleave", function(){
+                    mouseCursor.classList.remove("link_hover");
+                });
+            });
+
+            function myCursor(e){
+                mouseCursor.style.top = e.pageY + "px";
+                mouseCursor.style.left = e.pageX + "px";
+            }
+            
+            window.addEventListener("mousemove", myCursor);
+
+        }
+    </script>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Abadi';
+        }
+
+        body {
+            background-image: url("img/back.jpg");
+            background-size: cover; 
+            overflow: hidden;
+            cursor: none;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .gnbMenu {
+            display: flex;
+        }
+
+        .gnbMenu li {
+            margin: 0 15px;
+            list-style: none;
+            display: inline-block;
+            padding: 0 15px;
+        }
+
+        .cursor {
+            width: 50px;
+            height: 50px;
+            border:  1px solid white;
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            transform: translate(-50%, -50%);
+            transform-origin: 100% 100%;
+            transition: all 0.3s ease;
+            transition-property: background, transform;
+        }
+
+        .link_hover {
+            transform: scale(2);
+            background-color: rgba(37, 136, 49, 0.5);
+            border: none;
+        }
+
+        #img {
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px;
+        }
+
+        #img .h2 {
+            border-bottom: 1px solid white;
+            width: 300px;
+            margin: 0 auto;
+            
+        }
+
+        #img img {
+            position: relative;
+            z-index: -5;
+            width: 300px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        #img p {
+            line-height: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <header>
+        <nav class="gnbMenu">
+            <h1><a href="#">Han yerim</a></h1>
+            <ul>
+                <li><a href="#">Music</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Story</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="img">
+       
+           <img src="img/img.jpg" alt="프로필 이미지" width="300">
+    
+
+       <br> <h2>Han yerim</h2> <br>
+
+        <div class="h2"></div>
+       <br> <p><a href="mailto:hxxyrm@kaywon.ac.kr">hxxyrm@kaywon.ac.kr</a><br> 
+            <a href="https://www.instagram.com/noneofthismatternow/">@noneofthismatternow</a>
+        </p>
+
+    </section>
+
+    <footer>
+        <address></address>
+    </footer>
+</body>
+</html>
